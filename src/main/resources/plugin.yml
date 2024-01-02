@@ -1,0 +1,17 @@
+name: SurvivalAIO
+version: '${project.version}'
+main: me.anon695.survivalaio.SurvivalAIO
+api-version: '1.18'
+depend:
+  - Vault
+commands:
+  economy:
+    aliases:
+      - eco
+      - econ
+  balance:
+    aliases:
+      - bal
+  earning:
+    aliases:
+      - earn
