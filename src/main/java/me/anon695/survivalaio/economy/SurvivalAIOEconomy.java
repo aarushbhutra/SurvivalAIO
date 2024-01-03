@@ -60,7 +60,7 @@ public class SurvivalAIOEconomy implements Economy {
     @Override
     public boolean hasAccount(OfflinePlayer player) {
         if(player != null) {
-            return plugin.getData().contains(player.getUniqueId().toString());
+            return plugin.getEcoData().contains(player.getUniqueId().toString());
         }
         return false;
     }
@@ -83,7 +83,7 @@ public class SurvivalAIOEconomy implements Economy {
     @Override
     public double getBalance(OfflinePlayer player) {
         if(player != null) {
-            return plugin.getData().getDouble(player.getUniqueId().toString());
+            return plugin.getEcoData().getDouble(player.getUniqueId().toString());
         }
         return 0;
     }
@@ -106,7 +106,7 @@ public class SurvivalAIOEconomy implements Economy {
     @Override
     public boolean has(OfflinePlayer player, double amount) {
         if(player != null) {
-            return plugin.getData().getDouble(player.getUniqueId().toString()) >= amount;
+            return plugin.getEcoData().getDouble(player.getUniqueId().toString()) >= amount;
         }
         return false;
     }
@@ -130,12 +130,12 @@ public class SurvivalAIOEconomy implements Economy {
     @Override
     public EconomyResponse withdrawPlayer(OfflinePlayer player, double amount) {
         if(player != null) {
-            double balance = plugin.getData().getDouble(player.getUniqueId().toString());
+            double balance = plugin.getEcoData().getDouble(player.getUniqueId().toString());
             if(balance >= amount) {
-                YamlConfiguration configuration = plugin.getData();
+                YamlConfiguration configuration = plugin.getEcoData();
                 configuration.set(player.getUniqueId().toString(), balance - amount);
                 try {
-                    configuration.save(plugin.getDataFile());
+                    configuration.save(plugin.getEcoFile());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -164,12 +164,12 @@ public class SurvivalAIOEconomy implements Economy {
 
     @Override
     public EconomyResponse depositPlayer(OfflinePlayer player, double amount) {
-        YamlConfiguration configuration = plugin.getData();
+        YamlConfiguration configuration = plugin.getEcoData();
         if(player != null) {
-            double balance = plugin.getData().getDouble(player.getUniqueId().toString());
-            plugin.getData().set(player.getUniqueId().toString(), balance + amount);
+            double balance = plugin.getEcoData().getDouble(player.getUniqueId().toString());
+            plugin.getEcoData().set(player.getUniqueId().toString(), balance + amount);
             try {
-                configuration.save(plugin.getDataFile());
+                configuration.save(plugin.getEcoFile());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

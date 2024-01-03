@@ -18,9 +18,16 @@ public final class SurvivalAIO extends JavaPlugin {
 
     private static Economy econ = null;
 
-    private final File file = new File(getDataFolder(), "data.yml");
-    private YamlConfiguration dataConfig = null;
+    private final File configFolder = new File(getDataFolder(), "data");
 
+    private final File econFile = new File(configFolder, "balance.yml");
+    private YamlConfiguration econConfig = null;
+
+
+    /**
+     * Better way to send money messages (toggle? per minute?)
+     * Bank System
+     */
 
     @Override
     public void onEnable() {
@@ -50,9 +57,13 @@ public final class SurvivalAIO extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         saveConfig();
 
-        if(!file.exists()) {
+        if(!configFolder.exists()) {
+            configFolder.mkdirs();
+        }
+
+        if(!econFile.exists()) {
             try {
-                file.createNewFile();
+                econFile.createNewFile();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -72,16 +83,16 @@ public final class SurvivalAIO extends JavaPlugin {
 
 
     //Create a method to get the file as a YamlConfiguration and can be accessed from anywhere
-    public YamlConfiguration getData() {
-        if (dataConfig == null) {
-            dataConfig = YamlConfiguration.loadConfiguration(getDataFile());
+    public YamlConfiguration getEcoData() {
+        if (econConfig == null) {
+            econConfig = YamlConfiguration.loadConfiguration(getEcoFile());
         }
-        return dataConfig;
+        return econConfig;
     }
 
     //Create a method to save the file
-    public File getDataFile() {
-        return file;
+    public File getEcoFile() {
+        return econFile;
     }
 
 
@@ -102,6 +113,8 @@ public final class SurvivalAIO extends JavaPlugin {
         getCommand("balance").setExecutor(new BalanceCommand(this));
         getCommand("balance").setTabCompleter(new BalanceTabComplete());
         getCommand("earning").setExecutor(new EarningCommandGUI(this));
+        getCommand("pay").setExecutor(new PayCommand(this));
+        getCommand("pay").setTabCompleter(new PayTabComplete());
     }
 
 
@@ -131,7 +144,7 @@ public final class SurvivalAIO extends JavaPlugin {
     }
 
     public String formatNumber(double number) {
-        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
         return decimalFormat.format(number);
     }
 }

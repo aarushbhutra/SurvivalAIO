@@ -15,3 +15,6 @@ commands:
   earning:
     aliases:
       - earn
+  pay:
+    aliases:
+      - send

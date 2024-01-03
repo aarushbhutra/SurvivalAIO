@@ -32,7 +32,7 @@ public class BalanceCommand implements CommandExecutor {
             } else if (strings.length == 1) {
                 if(player.hasPermission("survivalaio.balance.others")) {
                     OfflinePlayer target = plugin.getServer().getOfflinePlayer(strings[0]);
-                    if(plugin.getData().contains(target.getUniqueId().toString())) {
+                    if(plugin.getEcoData().contains(target.getUniqueId().toString())) {
                         double targetBalance = plugin.getEconomy().getBalance(target);
                         String formattedBalance = plugin.formatNumber(targetBalance);
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("message.balance-other").replace("%player%", target.getName()).replace("%balance%", formattedBalance)));
@@ -50,7 +50,7 @@ public class BalanceCommand implements CommandExecutor {
                 return false;
             } else if (strings.length == 1) {
                 OfflinePlayer target = plugin.getServer().getOfflinePlayer(strings[0]);
-                if(plugin.getData().contains(target.getUniqueId().toString())) {
+                if(plugin.getEcoData().contains(target.getUniqueId().toString())) {
                     double targetBalance = plugin.getEconomy().getBalance(target);
                     String formattedBalance = plugin.formatNumber(targetBalance);
                     commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("message.balance-other").replace("%player%", target.getName()).replace("%balance%", formattedBalance))));

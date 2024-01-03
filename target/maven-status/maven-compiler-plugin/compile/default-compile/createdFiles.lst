@@ -1,11 +1,13 @@
 me\anon695\survivalaio\earning\MobEarningEvent.class
 me\anon695\survivalaio\economy\EconomyCommand.class
+me\anon695\survivalaio\economy\PayCommand.class
 me\anon695\survivalaio\earning\FarmingEarningRewards.class
 me\anon695\survivalaio\SurvivalAIO$Messages.class
 me\anon695\survivalaio\earning\EarningListenerGUI.class
 me\anon695\survivalaio\earning\FishingEarningRewards.class
 me\anon695\survivalaio\economy\BalanceTabComplete.class
 me\anon695\survivalaio\economy\EconomyTabComplete.class
+me\anon695\survivalaio\economy\PayTabComplete.class
 me\anon695\survivalaio\earning\EarningCommandGUI.class
 me\anon695\survivalaio\earning\WoodCuttingEarningRewards.class
 me\anon695\survivalaio\earning\CraftingEarningRewards.class

@@ -1,7 +1,6 @@
 package me.anon695.survivalaio.economy;
 
 import me.anon695.survivalaio.SurvivalAIO;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,10 +19,10 @@ public class UserDataCreator implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) throws IOException {
         Player player = event.getPlayer();
-        YamlConfiguration configuration = plugin.getData();
-        if(!plugin.getData().contains(player.getUniqueId().toString())) {
+        YamlConfiguration configuration = plugin.getEcoData();
+        if(!plugin.getEcoData().contains(player.getUniqueId().toString())) {
             configuration.set(player.getUniqueId().toString(), 0);
-            configuration.save(plugin.getDataFile());
+            configuration.save(plugin.getEcoFile());
         };
     }
 

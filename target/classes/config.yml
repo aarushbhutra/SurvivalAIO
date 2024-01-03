@@ -9,6 +9,15 @@ message:
   not-enough-money: "&c&lERROR! &cYou do not have enough money!"
   balance-me: "&aYour balance is: &e$%balance%!"
   balance-other: "&a%player%'s balance is: &e$%balance%!"
+  pay-receive: "&aYou have recieved &e$%amount% &afrom &e%player%&a!"
+  pay-send: "&aYou have sent &e$%amount% &ato &e%player%&a!"
+
+tax:
+  #Should a tax be added when players do /pay?
+  enabled: true
+  #We will use a logarithmic function to calculate the tax, which base should we use?
+  #The smaller the base, the higher the tax will be
+  base: 10
 
 earning:
   #Only triggers if user has a pickaxe

@@ -1,5 +1,5 @@
 name: SurvivalAIO
-version: '1.0-SNAPSHOT'
+version: '1.1'
 main: me.anon695.survivalaio.SurvivalAIO
 api-version: '1.18'
 depend:
@@ -15,3 +15,6 @@ commands:
   earning:
     aliases:
       - earn
+  pay:
+    aliases:
+      - send

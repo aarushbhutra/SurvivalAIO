@@ -9,8 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-import java.text.DecimalFormat;
-
 public class EconomyCommand implements CommandExecutor {
 
     private final SurvivalAIO plugin;
@@ -37,7 +35,7 @@ public class EconomyCommand implements CommandExecutor {
                     if(strings[0].equalsIgnoreCase("set")) {
                         OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(strings[1]);
                         //Check if the players uuid is in the data file
-                        if(plugin.getData().contains(offlinePlayer.getUniqueId().toString())) {
+                        if(plugin.getEcoData().contains(offlinePlayer.getUniqueId().toString())) {
                             //Check if the 3rd argument is a number
                             try {
                                 Integer.parseInt(strings[2]);
@@ -58,7 +56,7 @@ public class EconomyCommand implements CommandExecutor {
                     } else if(strings[0].equalsIgnoreCase("add")) {
                         OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(strings[1]);
                         //Check if the players uuid is in the data file
-                        if(plugin.getData().contains(offlinePlayer.getUniqueId().toString())) {
+                        if(plugin.getEcoData().contains(offlinePlayer.getUniqueId().toString())) {
                             try {
                                 Integer.parseInt(strings[2]);
                             } catch (NumberFormatException e) {
@@ -76,7 +74,7 @@ public class EconomyCommand implements CommandExecutor {
                     } else if(strings[0].equalsIgnoreCase("remove")) {
                         OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(strings[1]);
                         //Check if the players uuid is in the data file
-                        if(plugin.getData().contains(offlinePlayer.getUniqueId().toString())) {
+                        if(plugin.getEcoData().contains(offlinePlayer.getUniqueId().toString())) {
                             try {
                                 Integer.parseInt(strings[2]);
                             } catch (NumberFormatException e) {
@@ -119,7 +117,7 @@ public class EconomyCommand implements CommandExecutor {
                 if(strings[0].equalsIgnoreCase("set")) {
                     OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(strings[1]);
                     //Check if the 2nd argument is a player
-                    if(plugin.getData().contains(offlinePlayer.getUniqueId().toString())) {
+                    if(plugin.getEcoData().contains(offlinePlayer.getUniqueId().toString())) {
                         //Check if the 3rd argument is a number
                         try {
                             Integer.parseInt(strings[2]);
@@ -140,7 +138,7 @@ public class EconomyCommand implements CommandExecutor {
                 } else if(strings[0].equalsIgnoreCase("add")) {
                     OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(strings[1]);
                     //Check if the 2nd argument is a player
-                    if(plugin.getData().contains(offlinePlayer.getUniqueId().toString())) {
+                    if(plugin.getEcoData().contains(offlinePlayer.getUniqueId().toString())) {
                         try {
                             Integer.parseInt(strings[2]);
                         } catch (NumberFormatException e) {
@@ -158,7 +156,7 @@ public class EconomyCommand implements CommandExecutor {
                 } else if(strings[0].equalsIgnoreCase("remove")) {
                     OfflinePlayer offlinePlayer = plugin.getServer().getOfflinePlayer(strings[1]);
                     //Check if the 2nd argument is a player
-                    if(plugin.getData().contains(offlinePlayer.getUniqueId().toString())) {
+                    if(plugin.getEcoData().contains(offlinePlayer.getUniqueId().toString())) {
                         try {
                             Integer.parseInt(strings[2]);
                         } catch (NumberFormatException e) {
